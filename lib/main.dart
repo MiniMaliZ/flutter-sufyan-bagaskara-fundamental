@@ -15,6 +15,44 @@ class _MyAppState extends State<MyCalculator> {
   TextEditingController Kontrol1 = TextEditingController();
   TextEditingController Kontrol2 = TextEditingController();
 
+  // Variabel
+  double hasil = 0;
+  double angkaPertama = 0;
+  double angkaKedua = 0;
+
+  // function aritmatika
+  Tambah() {
+    setState(() {
+      angkaPertama = double.parse(Kontrol1.text);
+      angkaKedua = double.parse(Kontrol2.text);
+      hasil = angkaPertama + angkaKedua;
+    });
+  }
+
+  Kurang() {
+    setState(() {
+      angkaPertama = double.parse(Kontrol1.text);
+      angkaKedua = double.parse(Kontrol2.text);
+      hasil = angkaPertama - angkaKedua;
+    });
+  }
+
+  Kali() {
+    setState(() {
+      angkaPertama = double.parse(Kontrol1.text);
+      angkaKedua = double.parse(Kontrol2.text);
+      hasil = angkaPertama * angkaKedua;
+    });
+  }
+
+  Bagi() {
+    setState(() {
+      angkaPertama = double.parse(Kontrol1.text);
+      angkaKedua = double.parse(Kontrol2.text);
+      hasil = angkaPertama / angkaKedua;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +68,7 @@ class _MyAppState extends State<MyCalculator> {
             ),
             Align(
                 alignment: Alignment.center,
-                child: Text('Hasil : ',
+                child: Text('Hasil : $hasil',
                     textAlign: TextAlign.center,
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
@@ -66,19 +104,43 @@ class _MyAppState extends State<MyCalculator> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(onPressed: () {}, child: Text('Tambah')),
+                    ElevatedButton(
+                        onPressed: () {
+                          Tambah();
+                          Kontrol1.clear();
+                          Kontrol2.clear();
+                        },
+                        child: Text('Tambah')),
                     SizedBox(
                       width: 10,
                     ),
-                    ElevatedButton(onPressed: () {}, child: Text('Kurang')),
+                    ElevatedButton(
+                        onPressed: () {
+                          Kurang();
+                          Kontrol1.clear();
+                          Kontrol2.clear();
+                        },
+                        child: Text('Kurang')),
                     SizedBox(
                       width: 10,
                     ),
-                    ElevatedButton(onPressed: () {}, child: Text('Kali')),
+                    ElevatedButton(
+                        onPressed: () {
+                          Kali();
+                          Kontrol1.clear();
+                          Kontrol2.clear();
+                        },
+                        child: Text('Kali')),
                     SizedBox(
                       width: 10,
                     ),
-                    ElevatedButton(onPressed: () {}, child: Text('Bagi'))
+                    ElevatedButton(
+                        onPressed: () {
+                          Bagi();
+                          Kontrol1.clear();
+                          Kontrol2.clear();
+                        },
+                        child: Text('Bagi'))
                   ],
                 ))
           ],
